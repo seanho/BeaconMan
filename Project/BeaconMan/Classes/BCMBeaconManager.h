@@ -9,12 +9,13 @@
 
 + (BCMBeaconManager *)defaultManager;
 
+- (void)registerRegion:(CLBeaconRegion *)region;
 - (void)registerRegion:(CLBeaconRegion *)region enter:(BCMBeaconRegionEnterBlock)enter exit:(BCMBeaconRegionExitBlock)exit;
 - (void)unregisterRegion:(CLBeaconRegion *)region;
 
-- (void)notifyRegion:(CLBeaconRegion *)region repeat:(BOOL)repeat usingBlock:(BCMBeaconNotificationNotifyBlock)block;
-- (void)notifyRegionImmediate:(CLBeaconRegion *)region repeat:(BOOL)repeat usingBlock:(BCMBeaconNotificationNotifyBlock)block;
-- (void)notifyRegionNear:(CLBeaconRegion *)region repeat:(BOOL)repeat usingBlock:(BCMBeaconNotificationNotifyBlock)block;
-- (void)notifyRegionFar:(CLBeaconRegion *)region repeat:(BOOL)repeat usingBlock:(BCMBeaconNotificationNotifyBlock)block;
+- (void)notifyRegion:(CLBeaconRegion *)region repeat:(BOOL)repeat interval:(NSTimeInterval)interval usingBlock:(BCMBeaconNotificationNotifyBlock)block;
+- (void)notifyRegionImmediate:(CLBeaconRegion *)region repeat:(BOOL)repeat interval:(NSTimeInterval)interval usingBlock:(BCMBeaconNotificationNotifyBlock)block;
+- (void)notifyRegionNear:(CLBeaconRegion *)region repeat:(BOOL)repeat interval:(NSTimeInterval)interval usingBlock:(BCMBeaconNotificationNotifyBlock)block;
+- (void)notifyRegionFar:(CLBeaconRegion *)region repeat:(BOOL)repeat interval:(NSTimeInterval)interval usingBlock:(BCMBeaconNotificationNotifyBlock)block;
 
 @end

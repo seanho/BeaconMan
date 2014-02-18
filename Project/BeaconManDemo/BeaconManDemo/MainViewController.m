@@ -23,48 +23,24 @@
     CLBeaconRegion *region1 = [[CLBeaconRegion alloc] initWithProximityUUID:uuid major:1 minor:2991 identifier:@"2991"];
     CLBeaconRegion *region2 = [[CLBeaconRegion alloc] initWithProximityUUID:uuid major:1 minor:2994 identifier:@"2994"];
     
-    [[BCMBeaconManager defaultManager] registerRegion:region1 enter:nil exit:nil];
-    [[BCMBeaconManager defaultManager] registerRegion:region2 enter:nil exit:nil];
+    [[BCMBeaconManager defaultManager] registerRegion:region1];
+    [[BCMBeaconManager defaultManager] registerRegion:region2];
     
-    [[BCMBeaconManager defaultManager] notifyRegion:region1
-                                                      repeat:NO
+    [[BCMBeaconManager defaultManager] notifyRegionImmediate:region1
+                                                      repeat:YES
+                                                    interval:15
                                                   usingBlock:^(CLBeacon *beacon) {
-                                                      NSLog(@"Pantry");
                                                       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Pantry" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                                                       [alert show];
                                                   }];
     
-    [[BCMBeaconManager defaultManager] notifyRegion:region2
-                                                      repeat:NO
+    [[BCMBeaconManager defaultManager] notifyRegionImmediate:region2
+                                                      repeat:YES
+                                                    interval:15
                                                   usingBlock:^(CLBeacon *beacon) {
-                                                      NSLog(@"Toilet");
                                                       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Toilet" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                                                       [alert show];
                                                   }];
-}
-
-- (NSString *)formatProximity:(CLProximity)proximity
-{
-    if (proximity == CLProximityUnknown)
-    {
-        return @"Unknown Proximity";
-    }
-    else if (proximity == CLProximityImmediate)
-    {
-        return @"Immediate";
-    }
-    else if (proximity == CLProximityNear)
-    {
-        return @"Near";
-    }
-    else if (proximity == CLProximityFar)
-    {
-        return @"Far";
-    }
-    else
-    {
-        return @"";
-    }
 }
 
 @end

@@ -18,8 +18,7 @@
 - (void)addHandler:(BCMBeaconRegionHandler *)handler
 {
     CLBeaconRegion *region = handler.region;
-    
-    NSString *identifier = [self regionIdentifier:region];
+    NSString *identifier = [region.proximityUUID UUIDString];
     NSMutableArray *handlers = self.groupedHandlers[identifier];
     
     if (handlers)
@@ -34,7 +33,7 @@
 
 - (void)removeHandlersForRegion:(CLBeaconRegion *)region
 {
-    NSString *identifier = [self regionIdentifier:region];
+    NSString *identifier = [region.proximityUUID UUIDString];
     NSArray *handlersToRemove = [self handlersForRegion:region];
     
     [(NSMutableArray *)self.groupedHandlers[identifier] removeObjectsInArray:handlersToRemove];
@@ -42,7 +41,7 @@
 
 - (NSArray *)handlersForRegion:(CLBeaconRegion *)region
 {
-    NSString *identifier = [self regionIdentifier:region];
+    NSString *identifier = [region.proximityUUID UUIDString];
     NSArray *handlers = self.groupedHandlers[identifier];
     
     return [handlers filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
@@ -58,13 +57,6 @@
     [handlers enumerateObjectsUsingBlock:^(BCMBeaconRegionHandler *handler, NSUInteger idx, BOOL *stop) {
         if (block) block(handler);
     }];
-}
-
-#pragma mark - Private Methods
-
-- (NSString *)regionIdentifier:(CLBeaconRegion *)region
-{
-    return [region.proximityUUID UUIDString];
 }
 
 @end

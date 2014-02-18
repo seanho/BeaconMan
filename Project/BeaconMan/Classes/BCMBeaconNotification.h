@@ -9,9 +9,10 @@ typedef BOOL (^BCMBeaconNotificationPredicateBlock)(CLBeacon *beacon);
 @property (nonatomic, copy) BCMBeaconNotificationNotifyBlock notify;
 @property (nonatomic, copy) BCMBeaconNotificationPredicateBlock predicate;
 @property (nonatomic, readwrite) BOOL repeat;
+@property (nonatomic, readwrite) NSTimeInterval interval;
 @property (nonatomic, readonly) BOOL notified;
 
-+ (BCMBeaconNotification *)notificationWithNotify:(BCMBeaconNotificationNotifyBlock)notify repeat:(BOOL)repeat usingPredicate:(BCMBeaconNotificationPredicateBlock)predicate;
++ (BCMBeaconNotification *)notificationWithNotify:(BCMBeaconNotificationNotifyBlock)notify usingPredicate:(BCMBeaconNotificationPredicateBlock)predicate;
 - (void)notifyIfNeeded:(CLBeacon *)beacon;
 
 @end

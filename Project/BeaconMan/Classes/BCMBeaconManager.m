@@ -32,6 +32,11 @@
     return self;
 }
 
+- (void)registerRegion:(CLBeaconRegion *)region
+{
+    [self registerRegion:region enter:nil exit:nil];
+}
+
 - (void)registerRegion:(CLBeaconRegion *)region enter:(BCMBeaconRegionEnterBlock)enter exit:(BCMBeaconRegionExitBlock)exit
 {
     BCMBeaconRegionHandler *handler = [[BCMBeaconRegionHandler alloc] initWithBeaconRegion:region enter:enter exit:exit];
@@ -46,43 +51,47 @@
     [self.handlerRegistry removeHandlersForRegion:region];
 }
 
-- (void)notifyRegion:(CLBeaconRegion *)region repeat:(BOOL)repeat usingBlock:(BCMBeaconNotificationNotifyBlock)block
+- (void)notifyRegion:(CLBeaconRegion *)region repeat:(BOOL)repeat interval:(NSTimeInterval)interval usingBlock:(BCMBeaconNotificationNotifyBlock)block
 {
     BCMBeaconNotification *notification = [BCMBeaconNotification notificationWithNotify:block
-                                                                               repeat:repeat
                                                                        usingPredicate:^BOOL(CLBeacon *beacon) {
                                                                            return beacon.proximity != CLProximityUnknown;
                                                                        }];
+    notification.repeat = repeat;
+    notification.interval = interval;
     [self addNotification:notification toHandlersInRegion:region];
 }
 
-- (void)notifyRegionImmediate:(CLBeaconRegion *)region repeat:(BOOL)repeat usingBlock:(BCMBeaconNotificationNotifyBlock)block
+- (void)notifyRegionImmediate:(CLBeaconRegion *)region repeat:(BOOL)repeat interval:(NSTimeInterval)interval usingBlock:(BCMBeaconNotificationNotifyBlock)block
 {
     BCMBeaconNotification *notification = [BCMBeaconNotification notificationWithNotify:block
-                                                                               repeat:repeat
                                                                        usingPredicate:^BOOL(CLBeacon *beacon) {
                                                                            return beacon.proximity == CLProximityImmediate;
                                                                        }];
+    notification.repeat = repeat;
+    notification.interval = interval;
     [self addNotification:notification toHandlersInRegion:region];
 }
 
-- (void)notifyRegionNear:(CLBeaconRegion *)region repeat:(BOOL)repeat usingBlock:(BCMBeaconNotificationNotifyBlock)block
+- (void)notifyRegionNear:(CLBeaconRegion *)region repeat:(BOOL)repeat interval:(NSTimeInterval)interval usingBlock:(BCMBeaconNotificationNotifyBlock)block
 {
     BCMBeaconNotification *notification = [BCMBeaconNotification notificationWithNotify:block
-                                                                               repeat:repeat
                                                                        usingPredicate:^BOOL(CLBeacon *beacon) {
                                                                            return beacon.proximity == CLProximityNear;
                                                                        }];
+    notification.repeat = repeat;
+    notification.interval = interval;
     [self addNotification:notification toHandlersInRegion:region];
 }
 
-- (void)notifyRegionFar:(CLBeaconRegion *)region repeat:(BOOL)repeat usingBlock:(BCMBeaconNotificationNotifyBlock)block
+- (void)notifyRegionFar:(CLBeaconRegion *)region repeat:(BOOL)repeat interval:(NSTimeInterval)interval usingBlock:(BCMBeaconNotificationNotifyBlock)block
 {
     BCMBeaconNotification *notification = [BCMBeaconNotification notificationWithNotify:block
-                                                                               repeat:repeat
                                                                        usingPredicate:^BOOL(CLBeacon *beacon) {
                                                                            return beacon.proximity == CLProximityFar;
                                                                        }];
+    notification.repeat = repeat;
+    notification.interval = interval;
     [self addNotification:notification toHandlersInRegion:region];
 }
 
@@ -110,6 +119,12 @@
 
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region
 {
+    if ([region isKindOfClass:[CLBeaconRegion class]])
+    {
+        [self.handlerRegistry enumerateHandlersInRegion:(CLBeaconRegion *)region usingBlock:^(BCMBeaconRegionHandler *handler) {
+            [handler handleEnter:manager];
+        }];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
