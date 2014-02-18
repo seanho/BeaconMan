@@ -33,15 +33,15 @@
     }
     else if (self.region.major && self.region.minor)
     {
-        return [self.region.major isEqualToNumber:region.major] && [self.region.minor isEqualToNumber:region.minor];
+        return region.major && region.minor && [self.region.major isEqualToNumber:region.major] && [self.region.minor isEqualToNumber:region.minor];
     }
     else if (self.region.major)
     {
-        return [self.region.major isEqualToNumber:region.major];
+        return region.major && [self.region.major isEqualToNumber:region.major];
     }
     else
     {
-        return [self.region.minor isEqualToNumber:region.minor];
+        return region.minor && [self.region.minor isEqualToNumber:region.minor];
     }
 }
 

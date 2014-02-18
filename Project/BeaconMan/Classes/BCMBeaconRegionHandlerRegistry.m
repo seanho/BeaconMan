@@ -44,10 +44,14 @@
     NSString *identifier = [region.proximityUUID UUIDString];
     NSArray *handlers = self.groupedHandlers[identifier];
     
-    return [handlers filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        BCMBeaconRegionHandler *handler = (BCMBeaconRegionHandler *)evaluatedObject;
-        return [handler matchesMajorAndMinor:(CLBeaconRegion *)region];
-    }]];
+    if (handlers)
+    {
+        return [handlers filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+            BCMBeaconRegionHandler *handler = (BCMBeaconRegionHandler *)evaluatedObject;
+            return [handler matchesMajorAndMinor:(CLBeaconRegion *)region];
+        }]];
+    }
+    return [NSArray array];
 }
 
 - (void)enumerateHandlersInRegion:(CLBeaconRegion *)region usingBlock:(void(^)(BCMBeaconRegionHandler *handler))block
