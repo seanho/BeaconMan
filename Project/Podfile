@@ -1,7 +1,11 @@
-pod "BeaconMan", :path => "../BeaconMan.podspec"
+xcodeproj 'BeaconMan'
+platform :ios, '7.0'
 
-target "Demo" do
+target "BeaconMan" do
+
 end
 
-target "DemoTests" do
+target "BeaconManTests", :exclusive => true do
+  pod 'Kiwi/XCTest', '~> 2.2.3'
 end
+
