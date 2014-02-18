@@ -19,6 +19,7 @@
 		7883E74E18B30D8B00258272 /* BCMBeaconNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 7883E74818B30D8B00258272 /* BCMBeaconNotification.m */; };
 		7883E74F18B30D8B00258272 /* BCMBeaconRegionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7883E74A18B30D8B00258272 /* BCMBeaconRegionHandler.m */; };
 		7883E75018B30D8B00258272 /* BCMBeaconRegionHandlerRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 7883E74C18B30D8B00258272 /* BCMBeaconRegionHandlerRegistry.m */; };
+		7883E79118B3101C00258272 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7883E79018B3101C00258272 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		7883E74A18B30D8B00258272 /* BCMBeaconRegionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCMBeaconRegionHandler.m; sourceTree = "<group>"; };
 		7883E74B18B30D8B00258272 /* BCMBeaconRegionHandlerRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCMBeaconRegionHandlerRegistry.h; sourceTree = "<group>"; };
 		7883E74C18B30D8B00258272 /* BCMBeaconRegionHandlerRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCMBeaconRegionHandlerRegistry.m; sourceTree = "<group>"; };
+		7883E79018B3101C00258272 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7883E79118B3101C00258272 /* CoreLocation.framework in Frameworks */,
 				7883E71F18B3096300258272 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +115,7 @@
 		7883E71D18B3096300258272 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7883E79018B3101C00258272 /* CoreLocation.framework */,
 				7883E71E18B3096300258272 /* Foundation.framework */,
 				7883E72C18B3096300258272 /* XCTest.framework */,
 				7883E72F18B3096300258272 /* UIKit.framework */,
