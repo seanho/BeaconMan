@@ -15,6 +15,10 @@
 		7883E73318B3096300258272 /* libBeaconMan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7883E71B18B3096300258272 /* libBeaconMan.a */; };
 		7883E73918B3096300258272 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7883E73718B3096300258272 /* InfoPlist.strings */; };
 		7883E73B18B3096300258272 /* BeaconManTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7883E73A18B3096300258272 /* BeaconManTests.m */; };
+		7883E74D18B30D8B00258272 /* BCMBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7883E74618B30D8B00258272 /* BCMBeaconManager.m */; };
+		7883E74E18B30D8B00258272 /* BCMBeaconNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 7883E74818B30D8B00258272 /* BCMBeaconNotification.m */; };
+		7883E74F18B30D8B00258272 /* BCMBeaconRegionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7883E74A18B30D8B00258272 /* BCMBeaconRegionHandler.m */; };
+		7883E75018B30D8B00258272 /* BCMBeaconRegionHandlerRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 7883E74C18B30D8B00258272 /* BCMBeaconRegionHandlerRegistry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,14 @@
 		7883E73618B3096300258272 /* BeaconManTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeaconManTests-Info.plist"; sourceTree = "<group>"; };
 		7883E73818B3096300258272 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7883E73A18B3096300258272 /* BeaconManTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeaconManTests.m; sourceTree = "<group>"; };
+		7883E74518B30D8B00258272 /* BCMBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCMBeaconManager.h; sourceTree = "<group>"; };
+		7883E74618B30D8B00258272 /* BCMBeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCMBeaconManager.m; sourceTree = "<group>"; };
+		7883E74718B30D8B00258272 /* BCMBeaconNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCMBeaconNotification.h; sourceTree = "<group>"; };
+		7883E74818B30D8B00258272 /* BCMBeaconNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCMBeaconNotification.m; sourceTree = "<group>"; };
+		7883E74918B30D8B00258272 /* BCMBeaconRegionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCMBeaconRegionHandler.h; sourceTree = "<group>"; };
+		7883E74A18B30D8B00258272 /* BCMBeaconRegionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCMBeaconRegionHandler.m; sourceTree = "<group>"; };
+		7883E74B18B30D8B00258272 /* BCMBeaconRegionHandlerRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCMBeaconRegionHandlerRegistry.h; sourceTree = "<group>"; };
+		7883E74C18B30D8B00258272 /* BCMBeaconRegionHandlerRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCMBeaconRegionHandlerRegistry.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +158,14 @@
 		7883E74418B30CD400258272 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7883E74518B30D8B00258272 /* BCMBeaconManager.h */,
+				7883E74618B30D8B00258272 /* BCMBeaconManager.m */,
+				7883E74718B30D8B00258272 /* BCMBeaconNotification.h */,
+				7883E74818B30D8B00258272 /* BCMBeaconNotification.m */,
+				7883E74918B30D8B00258272 /* BCMBeaconRegionHandler.h */,
+				7883E74A18B30D8B00258272 /* BCMBeaconRegionHandler.m */,
+				7883E74B18B30D8B00258272 /* BCMBeaconRegionHandlerRegistry.h */,
+				7883E74C18B30D8B00258272 /* BCMBeaconRegionHandlerRegistry.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -266,6 +286,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7883E75018B30D8B00258272 /* BCMBeaconRegionHandlerRegistry.m in Sources */,
+				7883E74F18B30D8B00258272 /* BCMBeaconRegionHandler.m in Sources */,
+				7883E74D18B30D8B00258272 /* BCMBeaconManager.m in Sources */,
+				7883E74E18B30D8B00258272 /* BCMBeaconNotification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
